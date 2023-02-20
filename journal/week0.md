@@ -13,3 +13,8 @@ I already had aws cli installed
 
 i created a new IAM user
 ![image](https://user-images.githubusercontent.com/73601265/219960856-c782252a-5578-4766-ba18-c7bf9d7bf6d4.png)
+
+
+created a budget in aws for the project
+
+![image](https://user-images.githubusercontent.com/73601265/220197337-750477ca-9285-415a-a9fd-a8fdbccc60da.png)
