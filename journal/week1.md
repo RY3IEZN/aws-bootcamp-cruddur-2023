@@ -16,3 +16,5 @@ Frontend works smooth like a charm.
 ![image](https://user-images.githubusercontent.com/73601265/221248374-c64fa799-70d3-4f33-8d3c-16a9d49485d6.png)
 
 so now its time to do docker compose, combine them and watch them work together
+
+before then let me push to docker hub
