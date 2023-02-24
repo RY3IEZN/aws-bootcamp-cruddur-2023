@@ -18,3 +18,8 @@ Frontend works smooth like a charm.
 so now its time to do docker compose, combine them and watch them work together
 
 before then let me push to docker hub
+
+this resource really helped me to learn how to push to docker hub long ago and i always refer to it anytime i cant remember off head
+https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html
+
+
