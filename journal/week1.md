@@ -11,3 +11,8 @@ cmd:docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' back
 
 ![image](https://user-images.githubusercontent.com/73601265/221248074-5df860db-f63b-43e7-b56f-c65a10a57ff3.png)
 
+Frontend works smooth like a charm.
+
+![image](https://user-images.githubusercontent.com/73601265/221248374-c64fa799-70d3-4f33-8d3c-16a9d49485d6.png)
+
+so now its time to do docker compose, combine them and watch them work together
