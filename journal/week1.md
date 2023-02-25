@@ -22,4 +22,8 @@ before then let me push to docker hub
 this resource really helped me to learn how to push to docker hub long ago and i always refer to it anytime i cant remember off head
 https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html
 
+pushed to docker hub
+![image](https://user-images.githubusercontent.com/73601265/221343894-e75ec0df-c3cd-4f49-89f7-ac03dc91777c.png)
+![image](https://user-images.githubusercontent.com/73601265/221343907-066b0a8e-0e68-44b8-86e5-1bb2de3d5f53.png)
+![image](https://user-images.githubusercontent.com/73601265/221343971-f50ac154-1a5e-4cad-a68b-4971152ef175.png)
 
