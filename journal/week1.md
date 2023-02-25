@@ -28,3 +28,6 @@ pushed to docker hub
 ![image](https://user-images.githubusercontent.com/73601265/221343971-f50ac154-1a5e-4cad-a68b-4971152ef175.png)
 
 after working on docker compose, both containers can now communicate together the app now works
+
+![image](https://user-images.githubusercontent.com/73601265/221356624-450e18fe-e917-4e8f-b329-74ce236ebc28.png)
+![image](https://user-images.githubusercontent.com/73601265/221356713-a32cb6f5-b216-4b8d-aabc-84e583f62d8f.png)
