@@ -4,7 +4,7 @@ services:
     environment:
       FRONTEND_URL: "*"
       BACKEND_URL: "*"
-    image: backend-flask
+    image: backend:v2
     ports:
       - "4567:4567"
     volumes:
@@ -12,7 +12,7 @@ services:
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "http://localhost:4567"
-    image: frontend-react-js
+    image: fronntend:v2
     ports:
       - "3000:3000"
     volumes:
