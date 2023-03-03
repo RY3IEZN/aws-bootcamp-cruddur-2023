@@ -35,3 +35,15 @@ after working on docker compose, both containers can now communicate together th
 #add postgres and dynamodb to the docker compose 
 
 ![image](https://user-images.githubusercontent.com/73601265/221359401-76a40672-f592-423a-b27d-d5b0c96d4801.png)
+
+worked on the adding the endpoints for the backend and frontend
+the backend endpoint is api/activities/notifications , which resturns json
+![image](https://user-images.githubusercontent.com/73601265/222828853-fe20e1c0-4d17-4aac-8794-d31ca2b071bb.png)
+
+the front end adds the notification tab to the left hand side, (you need to be logged in to see it)
+all this is the picture after its done and bothe FE and BE arw communicating
+
+![image](https://user-images.githubusercontent.com/73601265/222829050-04725290-f3cb-497b-9153-f433ff462a1e.png)
+
+THank you very much... moving to week 2
+
