@@ -43,7 +43,7 @@ the backend endpoint is api/activities/notifications , which resturns json
 the front end adds the notification tab to the left hand side, (you need to be logged in to see it)
 all this is the picture after its done and bothe FE and BE arw communicating
 
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/73601265/222829402-f52e55f3-e17b-4d83-9a61-eac790324117.png)
 
 THank you very much... moving to week 2
 
