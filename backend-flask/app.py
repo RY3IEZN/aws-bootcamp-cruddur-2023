@@ -14,6 +14,14 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 
+
+#Rollbar for error monitoring
+import rollbar
+import rollbar.contrib.flask
+from flask import got_request_exception
+
+
+
 app = Flask(__name__)
 frontend = os.getenv('FRONTEND_URL')
 backend = os.getenv('BACKEND_URL')
@@ -25,6 +33,29 @@ cors = CORS(
   allow_headers="content-type,if-modified-since",
   methods="OPTIONS,GET,HEAD,POST"
 )
+
+
+@app.before_first_request
+def init_rollbar():
+    """init rollbar module"""
+    rollbar.init(
+        # access token
+        '5a6443e7544d49bb9a4369ff397d6ab6',
+        # environment name
+        'production',
+        # server root directory, makes tracebacks prettier
+        root=os.path.dirname(os.path.realpath(__file__)),
+        # flask already sets up logging
+        allow_logging_basic_config=False)
+
+    # send exceptions from `app` to rollbar, using flask's signal system.
+    got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+
+## Simple flask app
+@app.route('/rollbar/test')
+def rollbar_test():
+    rollbar.report_message('Hello World!', 'warning')
+    return "Hello World!"
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():

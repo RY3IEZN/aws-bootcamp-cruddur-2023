@@ -4,7 +4,7 @@ services:
     environment:
       FRONTEND_URL: "*"
       BACKEND_URL: "*"
-    image: backend:v2
+    image: backend:v7
     ports:
       - "4567:4567"
     volumes:
