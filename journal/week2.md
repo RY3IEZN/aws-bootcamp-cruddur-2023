@@ -1,4 +1,6 @@
 # Week 2 — Distributed Tracing
+ALL env are in the docker compose file
+
 #this week is for tracing and logging errors and metrics
 
 we will use about 3/4 APM tools... rollbar,xray,honeycomb and 1 more... 
