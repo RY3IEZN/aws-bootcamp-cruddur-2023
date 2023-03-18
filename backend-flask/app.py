@@ -20,6 +20,26 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 
+# honeycomb tracing
+from opentelemetry import trace
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+# Initialize tracing and an exporter that can send data to Honeycomb
+provider = TracerProvider()
+processor = BatchSpanProcessor(OTLPSpanExporter())
+provider.add_span_processor(processor)
+trace.set_tracer_provider(provider)
+tracer = trace.get_tracer(__name__)
+
+
+
+
+
+
 
 
 app = Flask(__name__)
@@ -33,8 +53,10 @@ cors = CORS(
   allow_headers="content-type,if-modified-since",
   methods="OPTIONS,GET,HEAD,POST"
 )
+FlaskInstrumentor().instrument_app(app)
+RequestsInstrumentor().instrument()
 
-
+# rollbar
 @app.before_first_request
 def init_rollbar():
     """init rollbar module"""
@@ -56,6 +78,8 @@ def init_rollbar():
 def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
+
+# rollbar end
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
