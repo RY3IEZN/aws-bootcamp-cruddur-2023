@@ -20,15 +20,15 @@ import { Amplify } from 'aws-amplify';
 Amplify.configure({
   "AWS_PROJECT_REGION": "eu-west-2",
   "aws_cognito_region": "eu-west-2",
-  "aws_user_pools_id": "eu-west-2_7mRQ0Y8Dh",
-  "aws_user_pools_web_client_id": "13h80bhfs0d46v4ujtavoou4h7",
+  "aws_user_pools_id": "eu-west-2_Ikmv23YeQ",
+  "aws_user_pools_web_client_id": "3uufg6dbjipk6ofi13drlou52s",
   "oauth": {},
   Auth: {
     // We are not using an Identity Pool
     // identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID, // REQUIRED - Amazon Cognito Identity Pool ID
-    region: process.env.REACT_AWS_PROJECT_REGION,           // REQUIRED - Amazon Cognito Region
-    userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,         // OPTIONAL - Amazon Cognito User Pool ID
-    userPoolWebClientId: process.env.REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID,   // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+    region: "eu-west-2",           // REQUIRED - Amazon Cognito Region
+    userPoolId: "eu-west-2_Ikmv23YeQ",         // OPTIONAL - Amazon Cognito User Pool ID
+    userPoolWebClientId: "3uufg6dbjipk6ofi13drlou52s",   // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
   }
 });
 

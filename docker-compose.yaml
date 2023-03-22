@@ -7,7 +7,7 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
       OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=6EeFI9tDGxQLAmBLN5z1vH"
       OTEL_SERVICE_NAME: "crudder"
-    image: backend:v9
+    image: thebackend:v2
     ports:
       - "4567:4567"
     volumes:
@@ -15,7 +15,7 @@ services:
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "http://localhost:4567"
-    image: fronntend:v2
+    image: thefrontend:v2
     ports:
       - "3000:3000"
     volumes:
