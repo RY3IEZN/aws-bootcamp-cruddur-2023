@@ -49,8 +49,8 @@ origins = [frontend, backend]
 cors = CORS(
   app, 
   resources={r"/api/*": {"origins": origins}},
-  expose_headers="location,link",
-  allow_headers="content-type,if-modified-since",
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
   methods="OPTIONS,GET,HEAD,POST"
 )
 FlaskInstrumentor().instrument_app(app)
@@ -118,6 +118,9 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
+  print(
+  request.headers.get("Authorization")
+  )
   data = HomeActivities.run()
   return data, 200
 

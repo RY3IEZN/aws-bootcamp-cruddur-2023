@@ -4,7 +4,10 @@ services:
     environment:
       FRONTEND_URL: "*"
       BACKEND_URL: "*"
-    image: backend:v7
+      OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
+      OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=6EeFI9tDGxQLAmBLN5z1vH"
+      OTEL_SERVICE_NAME: "crudder"
+    image: backend:v9
     ports:
       - "4567:4567"
     volumes:
