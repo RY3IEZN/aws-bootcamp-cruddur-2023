@@ -7,6 +7,9 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
       OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=6EeFI9tDGxQLAmBLN5z1vH"
       OTEL_SERVICE_NAME: "crudder"
+      AWS_COGNITO_USER_POOL_ID: "eu-west-2_Ikmv23YeQ"
+      AWS_COGNITO_USER_POOL_CLIENT_ID: "3uufg6dbjipk6ofi13drlou52s"
+      AWS_DEFAULT_REGION: "eu-west-2"
     image: thebackend:v2
     ports:
       - "4567:4567"

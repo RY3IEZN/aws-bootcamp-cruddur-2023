@@ -1,5 +1,6 @@
 from flask import Flask
-from flask import request
+from flask import request,redirect, jsonify,abort
+
 from flask_cors import CORS, cross_origin
 import os
 
@@ -14,6 +15,8 @@ from services.messages import *
 from services.create_message import *
 from services.show_activity import *
 
+
+from lib.coginto_token_verification import CognitoTokenVerification, extract_access_token ,TokenVerifyError
 
 #Rollbar for error monitoring
 import rollbar
@@ -81,6 +84,15 @@ def rollbar_test():
 
 # rollbar end
 
+cognito_token_verification = CognitoTokenVerification(
+  user_pool_id= os.getenv("AWS_COGNITO_USER_POOL_ID"),
+  user_pool_client_id= os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
+  region= os.getenv("AWS_DEFAULT_REGION")
+)
+
+
+
+# main app
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
   user_handle  = 'andrewbrown'
@@ -118,13 +130,17 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
-  print(
-  request.headers.get("Authorization")
-  )
-  data = HomeActivities.run()
+  access_token = extract_access_token(request.headers)
+  try:
+      claims = cognito_token_verification.verify(access_token)
+      app.logger.debug(claims)
+      data = HomeActivities.run(cognito_user_id=claims['username'])
+  except TokenVerifyError as e:
+      data = HomeActivities.run()
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
+# @aws_auth.authentication_required
 def data_notifications():
   data = NotificationsActivities.run()
   return data, 200
