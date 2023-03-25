@@ -4,4 +4,4 @@ NO_COLOR='\033[0m'
 LABEL="db-drop"
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
-psql cruddur < db/schema.sql -h localhost -U postgres 
+psql postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur cruddur < db/seed.sql

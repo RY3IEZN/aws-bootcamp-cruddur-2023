@@ -10,7 +10,8 @@ services:
       AWS_COGNITO_USER_POOL_ID: "eu-west-2_Ikmv23YeQ"
       AWS_COGNITO_USER_POOL_CLIENT_ID: "3uufg6dbjipk6ofi13drlou52s"
       AWS_DEFAULT_REGION: "eu-west-2"
-    image: thebackend:v2
+      CONNECTION_URL: "postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur"
+    image: thebackend:v3
     ports:
       - "4567:4567"
     volumes:

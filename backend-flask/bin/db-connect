@@ -7,4 +7,4 @@ printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 
 
-psql -U postgres --host localhost
+psql -U postgres --host localhost -d cruddur
