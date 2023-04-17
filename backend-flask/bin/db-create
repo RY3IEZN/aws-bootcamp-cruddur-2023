@@ -9,4 +9,6 @@ schema_path="$(realpath .)/db/schema.sql"
 
 echo $schema_path + "here is the path to the file"
 
-sudo -u postgres psql -c "CREATE DATABASE cruddur;"
+# sudo -u postgres --host postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur psql -c "CREATE DATABASE cruddur;"
+
+sudo psql postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432 -c "CREATE DATABASE cruddur;"

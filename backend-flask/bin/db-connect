@@ -7,4 +7,6 @@ printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 
 
-psql -U postgres --host localhost -d cruddur
+# psql -U postgres --host localhost -d cruddur
+# psql -h postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur -U postgress
+psql -h cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com --port=5432 -U postgres --dbname=cruddur

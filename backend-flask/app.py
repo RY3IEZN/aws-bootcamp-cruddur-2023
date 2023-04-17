@@ -128,6 +128,10 @@ def data_create_message():
     return model['data'], 200
   return
 
+@app.route('/api/health-check')
+def health_check():
+  return {'success': True}, 200
+
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
   access_token = extract_access_token(request.headers)
