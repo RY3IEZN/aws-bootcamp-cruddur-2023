@@ -12,7 +12,7 @@ sys.path.append(parent_path)
 from lib.db import db
 
 attrs = {
-  'endpoint_url': "http://127.0.0.1:8000"
+  'endpoint_url': 'http://localhost:8000'
 }
 # unset endpoint url for use with production database
 if len(sys.argv) == 2:
@@ -50,8 +50,8 @@ def get_user_uuids():
 def create_message_group(client,message_group_uuid, my_user_uuid, last_message_at=None, message=None, other_user_uuid=None, other_user_display_name=None, other_user_handle=None):
   table_name = 'cruddermessages'
   record = {
-    'pk':   {'S': f"GRP#{my_user_uuid}"},
-    'sk':   {'S': last_message_at},
+    'partitionKey':   {'S': f"GRP#{my_user_uuid}"},
+    'secondarykey':   {'S': last_message_at},
     'message_group_uuid': {'S': message_group_uuid},
     'message':  {'S': message},
     'user_uuid': {'S': other_user_uuid},
@@ -66,10 +66,10 @@ def create_message_group(client,message_group_uuid, my_user_uuid, last_message_a
   print(response)
 
 def create_message(client,message_group_uuid, created_at, message, my_user_uuid, my_user_display_name, my_user_handle):
-  table_name = 'cruddur-messages'
+  table_name = 'cruddermessages'
   record = {
-    'pk':   {'S': f"MSG#{message_group_uuid}"},
-    'sk':   {'S': created_at },
+    'partitionKey':   {'S': f"MSG#{message_group_uuid}"},
+    'secondarykey':   {'S': created_at },
     'message_uuid': { 'S': str(uuid.uuid4()) },
     'message': {'S': message},
     'user_uuid': {'S': my_user_uuid},
@@ -85,7 +85,7 @@ def create_message(client,message_group_uuid, created_at, message, my_user_uuid,
   print(response)
 
 message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399" 
-now = datetime.now()
+now = datetime.now(timezone.utc).astimezone()
 users = get_user_uuids()
 
 create_message_group(
@@ -230,7 +230,7 @@ for i in range(len(lines)):
     print(lines[i])
     raise 'invalid line'
 
-  created_at = (now - timedelta(days=1) + timedelta(minutes=i)).isoformat()
+  created_at = (now + timedelta(minutes=i)).isoformat()
   create_message(
     client=ddb,
     message_group_uuid=message_group_uuid,

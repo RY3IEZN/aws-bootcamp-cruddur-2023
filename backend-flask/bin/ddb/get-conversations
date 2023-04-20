@@ -25,13 +25,13 @@ query_params = {
   'ScanIndexForward': False,
   'Limit': 20,
   'ReturnConsumedCapacity': 'TOTAL',
-  'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
-  #'KeyConditionExpression': 'pk = :pk AND sk BETWEEN :start_date AND :end_date',
+  'KeyConditionExpression': 'partitionKey = :partitionKey AND begins_with(secondarykey,:year)',
+  #'KeyConditionExpression': 'partitionKey = :partitionKey AND secondarykey BETWEEN :start_date AND :end_date',
   'ExpressionAttributeValues': {
     ':year': {'S': year },
     #":start_date": { "S": "2023-03-01T00:00:00.000000+00:00" },
     #":end_date": { "S": "2023-03-19T23:59:59.999999+00:00" },
-    ':pk': {'S': f"MSG#{message_group_uuid}"}
+    ':partitionKey': {'S': f"MSG#{message_group_uuid}"}
   }
 }
 
@@ -48,10 +48,10 @@ print(json.dumps(response['ConsumedCapacity'], sort_keys=True, indent=2))
 items = response['Items']
 items.reverse()
 
-for item in reversed_array:
+for item in items:
   sender_handle = item['user_handle']['S']
   message       = item['message']['S']
-  timestamp     = item['sk']['S']
+  timestamp     = item['secondarykey']['S']
   dt_object = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f%z')
   formatted_datetime = dt_object.strftime('%Y-%m-%d %I:%M %p')
   print(f'{sender_handle: <12}{formatted_datetime: <22}{message[:40]}...')

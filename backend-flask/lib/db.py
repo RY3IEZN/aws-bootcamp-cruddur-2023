@@ -21,14 +21,14 @@ class Db:
     return template_content  
 
   def init_pool(self):
-    connection_url = os.getenv("CONNECTION_URL")
-    self.pool = ConnectionPool(connection_url)
+    # connection_url = os.getenv("CONNECTION_URL")
+    self.pool = ConnectionPool("postgres://postgres:postgres123#@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur")
 
-  def print_sql(self,title,sql):
+  def print_sql(self,title,sql,params={}):
     cyan = '\033[96m'
     no_color = '\033[0m'
     print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
-    print(sql)
+    print(sql,params)
 
 # when we want to commit data to the db
   def query_commit_with_id(self,sql,params={}):
@@ -98,6 +98,14 @@ class Db:
     ) array_row);
     """
     return sql
+
+  def query_value(self,sql,params={}):
+    self.print_sql('value',sql,params)
+    with self.pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(sql,params)
+        json = cur.fetchone()
+        return json[0]
 
 
 
