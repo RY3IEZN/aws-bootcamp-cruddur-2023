@@ -22,6 +22,9 @@ export default function MessageGroupPage() {
     try {
       const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/message_groups`
       const res = await fetch(backend_url, {
+        headers: {
+          Authorization: `Bearer ${"eyJraWQiOiI4ZzNMWlVPY0xIXC9XWVhiYjltVTdZcGx2SVlNcFNDb0pxa21nWU1MWEtkdz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjZTFmMmJmNS1lMDc4LTRjOTItOGQwMy01YTgxYmRlNzZjNWIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9Ja212MjNZZVEiLCJjbGllbnRfaWQiOiIzdXVmZzZkYmppcGs2b2ZpMTNkcmxvdTUycyIsIm9yaWdpbl9qdGkiOiIwYzY3ZWYwNS0wNjlmLTQyMjgtOTlhMy0wYTc4NGY3ODc2ZmEiLCJldmVudF9pZCI6ImEwNTM3YTc5LWQ1YjYtNDZkMC05YTU1LTgwZTU0ZDJjMmVhNCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2ODE5OTU0OTksImV4cCI6MTY4MTk5OTA5OSwiaWF0IjoxNjgxOTk1NDk5LCJqdGkiOiIxNWFjYWNmYS03MzZiLTQ3ZjctODQ2Yi04MDk4YjZhZGQ2YzEiLCJ1c2VybmFtZSI6ImNlMWYyYmY1LWUwNzgtNGM5Mi04ZDAzLTVhODFiZGU3NmM1YiJ9.fFAyGS6_F9MnQTIvcsaS3n6neiJ8pukZQRYP-fDu__WNYH4p6Rjdzh_29xnwP4OMHMQqFKFTNU2fDXiBCk3bRg8P1UXu7BWNw7Omv2kJhbLteYHcO4Znd-_cDXGlOj5J0FAHNOKiakvNOarnDueHONbRFvgLbpNNcuBGrb_Eq6Tne7C6EdhIhdJHHWYHYJhzjJrC5kKWLQXXjtf-b4SMvDeZcu01TooCIIzWryDcN4gTffVRRQcU2iJj8d4FQjWXO4cl9HhI2hxO2a9cTrTa0xkEPvWXok0fQSrNSdhpP3bMKVH3wCaFLb8zXhxU4wZ-4S4hK_OaZD4p3T-dwEsLSg"}`
+        },
         method: "GET"
       });
       let resJson = await res.json();

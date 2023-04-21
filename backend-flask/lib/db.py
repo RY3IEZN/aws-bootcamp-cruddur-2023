@@ -33,7 +33,8 @@ class Db:
 # when we want to commit data to the db
   def query_commit_with_id(self,sql,params={}):
     print("----SQLSTATEMENT----")
-
+    print(sql)
+    print("----SQLSTATEMENT----")
     pattern = r"\bRETURNING\b"
     is_returning_id = re.search(pattern, sql)
 

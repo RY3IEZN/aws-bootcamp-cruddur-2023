@@ -7,4 +7,4 @@ printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 echo "dropping the db"
 # sudo -u postgres psql -c "DROP DATABASE cruddur;"
 
-sudo psql postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432 -c "DROP DATABASE cruddur WITH (FORCE);"
+sudo psql postgres://postgres:postgres123#@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432 -c "DROP DATABASE cruddur WITH (FORCE);"

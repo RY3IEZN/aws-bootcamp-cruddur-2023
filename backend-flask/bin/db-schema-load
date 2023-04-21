@@ -5,7 +5,7 @@ LABEL="db-drop"
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 # load schema
-# psql postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur cruddur < /home/ubuntu/awsbootcamp/aws-bootcamp-cruddur-2023/backend-flask/db/schema.sql
+# psql postgres://postgres:postgres123#@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur cruddur < /home/ubuntu/awsbootcamp/aws-bootcamp-cruddur-2023/backend-flask/db/schema.sql
 
 # load seed
-psql postgres://postgres:postgress@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur cruddur < /home/ubuntu/awsbootcamp/aws-bootcamp-cruddur-2023/backend-flask/db/seed.sql
+psql postgres://postgres:postgres123#@cruddur-db-instance.chupgxpbfimi.eu-west-2.rds.amazonaws.com:5432/cruddur cruddur < /home/ubuntu/awsbootcamp/aws-bootcamp-cruddur-2023/backend-flask/db/seed.sql

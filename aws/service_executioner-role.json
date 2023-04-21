@@ -1,0 +1,24 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "ecs-tasks.amazonaws.com"
+        ]
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters",
+        "ssm:GetParameter"
+      ],
+      "Resource": "arn:aws:ssm:eu-west-2:516627092032:parameter/cruddur/backend-flask/*"
+    }
+  ]
+}
