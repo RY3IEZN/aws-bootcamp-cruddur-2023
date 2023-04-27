@@ -26,10 +26,10 @@ phases:
 env:
   variables:
     AWS_ACCOUNT_ID: 516627092032
-    AWS_DEFAULT_REGION: eu-west-2
-    CONTAINER_NAME: backend-flask
-    IMAGE_URL: 516627092032.dkr.ecr.eu-west-2.amazonaws.com
-    REPO_NAME: backend-flask:latest
+    AWS_DEFAULT_REGION: "eu-west-2"
+    CONTAINER_NAME: "backend-flask"
+    IMAGE_URL: "516627092032.dkr.ecr.eu-west-2.amazonaws.com"
+    REPO_NAME: "backend-flask:latest"
 artifacts:
   files:
     - imagedefinitions.json
