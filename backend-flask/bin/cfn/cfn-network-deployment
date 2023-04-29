@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+set -e # stop the execution of the script if it fails
+
+CFN_PATH="/home/ubuntu/awsbootcamp/aws-bootcamp-cruddur-2023/backend-flask/bin/cfn/networking/template.yml"
+
+aws cloudformation deploy \
+  --stack-name "CrodCluster" \
+  --s3-bucket "cfn-artifactss" \
+  --template-file "$CFN_PATH" \
+  --no-execute-changeset \
+  --capabilities CAPABILITY_NAMED_IAM
